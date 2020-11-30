@@ -1,0 +1,9 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :phone_number %>
+  <%= f.input :company %>
+  <%= f.input :date_of_birth, label: 'Date of birth (YYYY/MM/DD)' %>
+  <%= f.input :is_female, as: :radio_buttons %>
+  <%= f.button :submit, 'Save', class: "btn btn-large btn-danger" %>
+ <% end %>
