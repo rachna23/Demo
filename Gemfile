@@ -30,6 +30,7 @@ gem 'braintree'
 gem 'figaro'
 gem 'simple_form'
 gem 'rubocop-rails', require: false
+gem 'image_processing'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -44,7 +45,8 @@ end
   gem 'jquery-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
-
+  gem "aws-sdk-s3", require: false
+  gem "image_processing"
 
 
 group :development do

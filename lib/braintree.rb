@@ -1,7 +1,7 @@
 module Braintree
   
   def gateway
-     env = Braintree::Configuration.environment = :sandbox
+    env = Braintree::Configuration.environment = :sandbox
     @gateway ||= Braintree::Gateway.new(
       :environment => :sandbox,
       :merchant_id => 'phng4ppqvqx6gf6y',

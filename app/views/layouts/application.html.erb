@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,15 +22,22 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/transactions/new"> Add new transaction <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/transactions/new"> Transaction <span class="sr-only">(current)</span></a>
+          </li><li class="nav-item active">
+            <a class="nav-link" href="/categories/new"> Add Category <span class="sr-only">(current)</span></a>
           </li>
+          </li><li class="nav-item active">
+            <a class="nav-link" href="/products/new"> Add Product <span class="sr-only">(current)</span></a>
+          </li>
+
+
         </ul>
         <span class="navbar-text">
-          <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
+          <% if user_signed_in? %>  
+            Total Items on my cart <strong><%= link_to 'Cart', cart_path(@current_cart,:product_id => params["product_id"]), :class => 'navbar-link' %></strong>.
             <%= link_to 'Edit profile', edit_profile_path, :class => 'navbar-link' %> |
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
           <% else %>
@@ -46,6 +54,8 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+       <%= render partial: "categories/index" %> 
+        </br>
       <%= yield %>
       
     </div>  

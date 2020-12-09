@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :profile, dependent: :destroy
-  after_create :create_profile       
+  after_create :create_profile
+  #validates_presence_of :first_name, :country, :city, :state, :phone     
 end

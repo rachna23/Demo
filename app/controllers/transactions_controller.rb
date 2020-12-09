@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+$LOAD_PATH << '.'
 include Braintree
 
   def new
@@ -8,9 +9,10 @@ include Braintree
 
 
 def create
-    amount = params["amount"] # In production you should not take amounts directly from clients
+    #amount = params["amount"]
+    gateway = Profile.new.gateway
+    amount = @current_cart.line_items.map(&:product).map(&:price).sum.to_f || 100
     nonce = params["payment_method_nonce"]
-    byebug
     result = gateway.transaction.sale(amount: amount,payment_method_nonce: nonce,:customer_id => current_user.profile.try(:braintree_customer_id),:options => {:submit_for_settlement => true})
     if result.success? || result.transaction
       redirect_to checkout_path(result.transaction.id)
