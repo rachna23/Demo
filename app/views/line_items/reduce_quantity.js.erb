@@ -1,0 +1,1 @@
+$('#line-item<%= @line_item.id %>').html("<%= escape_javascript(render(:partial => 'line_items/update_quantity', :locals => {:line_item => @line_item} ))%>");

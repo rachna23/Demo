@@ -1,0 +1,21 @@
+
+<div class="col-sm-8 mb-3 mb-md-0">
+ <div class="card">
+   <h5 class="card-header h5">Add Product</h5>
+    <div class="card-body">
+      <%= simple_form_for(@product) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= f.input :name %>
+          <%= f.input :price %>
+          <%= f.input :description %>
+          <%= f.input :avatar %>
+          <%#= f.select(:category_id, @categories, {} ,{ :class => 'my_style_class' }) %>
+
+          <%= f.input :category_id, :collection => @categories, :selected => "selected"  %>
+
+         <%= f.button :submit, :class => "btn btn-primary mb-2"%>
+      <% end %>
+    </div>  
+  </div>
+</div> 

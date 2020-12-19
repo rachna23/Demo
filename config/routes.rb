@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   #get "/orders" => "orders#index", :as => :orders
   #post "/orders" => "orders#create_orders", :as => :create_orders
 
+   post "/hook" => "regstrations#hook"
+
   devise_for :users
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"

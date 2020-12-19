@@ -1,0 +1,20 @@
+
+<div class="col-sm-8 mb-3 mb-md-0">
+ <div class="card">
+	 <h5 class="card-header h5">Add category</h5>
+	  <div class="card-body">
+			<%= simple_form_for(@category) do |f| %>
+			  <%= f.error_notification %>
+			  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+			    <%= f.input :name , :input_html => { :class => 'col-sm-6 col-form-label' } %>
+			    <%= f.input :desc , :input_html => { :class => 'col-sm-6 col-form-label' } %>
+			    <%= f.button :submit, :class => "btn btn-primary mb-2"%>
+			<% end %>
+		</div>	
+  </div>
+</div>
+
+
+
+

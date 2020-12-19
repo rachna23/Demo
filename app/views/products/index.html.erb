@@ -1,0 +1,27 @@
+<br>
+
+<div class="row image-grid">
+   <% @products.each do |product| %>
+  <div class="col-sm-4 col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <a href="" target="_blank">
+
+           <%= link_to image_tag(product.avatar , :class => "img-responsive center-block") , product_path(id: product.id)  rescue image_tag 'http://placehold.it/250x250'%>
+        </a>
+      </div>
+      <div class="panel-footer">
+        <i class="fa fa-camera-retro" aria-hidden="true">Name: <%= product.name %></i></br>
+        <i class="fa fa-camera-retro" aria-hidden="true">Price: <%= product.price %></i>
+      
+      </div>
+    </div>
+  </div>
+<% end %> 
+
+<style type="text/css">
+.image-grid img {
+   margin-bottom: 1rem;
+}</style>
+
+
