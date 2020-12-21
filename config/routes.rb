@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  # root 'welcome#index'
+
+   devise_scope :user do
+    root 'devise/sessions#new' 
+  end
   resources :products
   resources :categories
   resources :transactions, only: [:new, :create]
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
 
    post "/hook" => "regstrations#hook"
 
-  devise_for :users
+ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
   post 'line_items' => "line_items#create"
@@ -19,6 +23,8 @@ Rails.application.routes.draw do
   delete 'line_items/:id' => "line_items#destroy"
   post 'line_items/:id/add' => "line_items#add_quantity", as: "line_item_add"
   post 'line_items/:id/reduce' => "line_items#reduce_quantity", as: "line_item_reduce"
+#  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
 
 
 

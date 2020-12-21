@@ -31,6 +31,8 @@ gem 'figaro'
 gem 'simple_form'
 gem 'rubocop-rails', require: false
 gem 'image_processing'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
