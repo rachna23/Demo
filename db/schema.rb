@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_20_072952) do
+ActiveRecord::Schema.define(version: 2020_12_24_171100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_072952) do
   create_table "addresses", force: :cascade do |t|
     t.string "country", default: "", null: false
     t.string "city", default: "", null: false
-    t.string "state", default: "", null: false
+    t.string "state_id", default: "", null: false
     t.string "pincode", default: "", null: false
     t.string "landmark", default: "", null: false
     t.string "address", default: "", null: false
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 2020_12_20_072952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "short_name"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -78,6 +91,8 @@ ActiveRecord::Schema.define(version: 2020_12_20_072952) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "profile_id"
+    t.integer "billing_address_id"
+    t.integer "shipping_address_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -113,6 +128,13 @@ ActiveRecord::Schema.define(version: 2020_12_20_072952) do
   create_table "roles_users", id: false, force: :cascade do |t|
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "short_name"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,28 +10,21 @@
 			  <%= f.input :company %>
 			  <%= f.input :date_of_birth, label: 'Date of birth (YYYY/MM/DD)' %>
 			  <%= f.input :is_female, as: :radio_buttons %> </br>
-
-
-			 <h5 class="card-header h5">Address details</h5>
-					<%= f.simple_fields_for :address  do |ff| %>
-				    <%#= ff.input :country %>
-				    <%= ff.input :city %>
-				    <%= ff.input :state %>
-				    <%= ff.input :pincode %>
-				    <%= ff.input :landmark %>
-				    <%= ff.input :address %>
-			      <%= ff.input :street_address %> 
-      	    <% if params["controller"] == "orders" %>
-      	      <%= hidden_field_tag 'order', 'true'  %>
-      	    <% end %>  
-
 			  <%= f.button :submit, 'Save', class: "btn btn-large btn-danger" %>
-  
-
-				<% end %>
 		 <% end %>
 		</div>	
   </div>
 </div>
 
-		 
+<script type="text/javascript">
+	var country = document.getElementById("country");
+
+// When a user chooses a country, send a GET 
+// request to the server with the country's id as a parameter
+country.addEventListener("change", function(){
+  $.ajax({
+    url: "/states?country=" + country.value,
+    type: "GET"
+  })
+})
+</script>

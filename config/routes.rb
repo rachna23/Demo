@@ -4,11 +4,14 @@ Rails.application.routes.draw do
    devise_scope :user do
     root 'devise/sessions#new' 
   end
+
   resources :products
   resources :categories
   resources :transactions, only: [:new, :create]
   resource :profile
   resources :orders
+  resources :states, only: :index
+
   #get "/new_orders" => "orders#new"
   #get "/orders" => "orders#index", :as => :orders
   #post "/orders" => "orders#create_orders", :as => :create_orders

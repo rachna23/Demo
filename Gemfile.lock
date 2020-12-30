@@ -59,6 +59,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.1)
+    awesome_print (1.8.0)
     aws-eventstream (1.1.0)
     aws-partitions (1.400.0)
     aws-sdk-core (3.109.3)
@@ -93,6 +94,8 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    city-state (0.1.0)
+      rubyzip (>= 1.1)
     commonjs (0.2.7)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
@@ -313,11 +316,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   braintree
   byebug
   capybara (>= 2.15)
+  city-state
   devise
   figaro
   image_processing

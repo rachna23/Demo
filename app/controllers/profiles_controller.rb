@@ -15,6 +15,10 @@ class ProfilesController < ApplicationController
 		  end
   end
 
+  def show
+  	@profile = current_user.profile
+  end	
+
   def redirect_path
   	if params["order"] == "true"
      @order = Order.new(profile: current_user.profile)

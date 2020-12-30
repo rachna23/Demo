@@ -1,0 +1,24 @@
+// app/views/states/index.js.erb
+// Grab the state select box.
+var state = document.getElementById("state");
+
+
+
+
+// var state = $('#state').val();
+
+	alert(state.value)
+ 
+// Clear any populated options in the select box
+while (state.firstChild) state.removeChild(state.firstChild);
+
+// Add a placeholder
+var placeholder = document.createElement("option");
+placeholder.text = "Choose a state";
+placeholder.value = " ";
+state.appendChild(placeholder);
+
+// Use erb templating to add the states
+<% @states.each do |s| %>
+  state.options[state.options.length] = new Option('<%= s[1] %>', '<%= s[0] %>')
+<% end %>

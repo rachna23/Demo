@@ -1,0 +1,56 @@
+<div class="col-sm-8 mb-3 mb-md-0">
+ <div class="card">
+	 <h5 class="card-header h5">Add Billing address details</h5>
+	  <div class="card-body">
+		  <%= simple_form_for @order  do |f| %>
+
+					<%= f.simple_fields_for :billing_address  do |ba| %>
+				    
+						<%#= ba.select :state, options_for_select([]),{}, {:class => "signup-input-container--input", :id => "state"} %>
+
+						<%= ba.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
+						<%= ba.input :city %>
+				    <%= ba.input :pincode %>
+				    <%= ba.input :landmark %>
+				    <%= ba.input :address %>
+						<%= ba.input :street_address %> 
+		</div>	
+  </div>
+</div>
+
+<div class="col-sm-8 mb-3 mb-md-0">
+ <div class="card">
+	 <h5 class="card-header h5">Add shipping address details</h5>
+	  <div class="card-body">
+			    <%= f.simple_fields_for :shipping_address  do |sa| %>
+            <%= sa.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
+				    <%= sa.input :city %>
+				    <%= sa.input :pincode %>
+				    <%= sa.input :landmark %>
+				    <%= sa.input :address %>
+			      <%= sa.input :street_address %>
+            <%= f.hidden_field :profile_id, :value => @profile.id %>
+			  <%= f.button :submit, 'Save', class: "btn btn-large btn-danger" %>
+				<% end %>
+		 <% end %>
+		<% end %> 
+		</div>	
+  </div>
+</div>
+
+<script type="text/javascript">
+	var country = document.getElementById("country");
+
+// When a user chooses a country, send a GET 
+// request to the server with the country's id as a parameter
+country.addEventListener("change", function(){
+  $.ajax({
+    url: "/states?country=" + country.value,
+    type: "GET"
+  })
+})
+
+
+
+
+</script>
