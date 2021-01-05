@@ -1,56 +1,21 @@
-<div class="col-sm-8 mb-3 mb-md-0">
- <div class="card">
-	 <h5 class="card-header h5">Add Billing address details</h5>
-	  <div class="card-body">
-		  <%= simple_form_for @order  do |f| %>
+<div class="nested-fields">
 
-					<%= f.simple_fields_for :billing_address  do |ba| %>
-				    
-						<%#= ba.select :state, options_for_select([]),{}, {:class => "signup-input-container--input", :id => "state"} %>
+	<%= form_for @order do |f| %>
+<%#= render 'shared/errors', object: @order %>
+	  <%= f.hidden_field :profile_id, :value => current_user.profile.id %>
+	  <div>
+	    <p><strong>Addresses:</strong></p>
 
-						<%= ba.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
-						<%= ba.input :city %>
-				    <%= ba.input :pincode %>
-				    <%= ba.input :landmark %>
-				    <%= ba.input :address %>
-						<%= ba.input :street_address %> 
-		</div>	
-  </div>
-</div>
+	    <div id="addresses">
+	      <%= f.fields_for :addresses do |address| %>
+	        <%= render 'address_fields', f: address %>
+	      <% end %>
+	      <div class="links">
+	        <%= link_to_add_association 'add address', f, :addresses %>
+	      </div>
+	    </div>
+	  </div>
 
-<div class="col-sm-8 mb-3 mb-md-0">
- <div class="card">
-	 <h5 class="card-header h5">Add shipping address details</h5>
-	  <div class="card-body">
-			    <%= f.simple_fields_for :shipping_address  do |sa| %>
-            <%= sa.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
-				    <%= sa.input :city %>
-				    <%= sa.input :pincode %>
-				    <%= sa.input :landmark %>
-				    <%= sa.input :address %>
-			      <%= sa.input :street_address %>
-            <%= f.hidden_field :profile_id, :value => @profile.id %>
-			  <%= f.button :submit, 'Save', class: "btn btn-large btn-danger" %>
-				<% end %>
-		 <% end %>
-		<% end %> 
-		</div>	
-  </div>
-</div>
-
-<script type="text/javascript">
-	var country = document.getElementById("country");
-
-// When a user chooses a country, send a GET 
-// request to the server with the country's id as a parameter
-country.addEventListener("change", function(){
-  $.ajax({
-    url: "/states?country=" + country.value,
-    type: "GET"
-  })
-})
-
-
-
-
-</script>
+	  <%= f.submit %>
+	<% end %>
+</div>	

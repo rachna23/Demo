@@ -1,0 +1,12 @@
+<div class="nested-fields">
+	<%= f.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
+	<%= f.text_field :city %>
+	pincode:<%= f.text_field :pincode %>
+	<%= f.text_field :landmark %>
+	<%= f.text_field :address %>
+	<%= f.text_field :street_address %>
+
+  <%= f.check_box :_destroy %>
+
+  <%= link_to_remove_association "remove address", f %>
+</div>

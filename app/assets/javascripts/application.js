@@ -8,3 +8,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+//= require cocoon
+//= require global

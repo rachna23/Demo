@@ -35,6 +35,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'city-state'
 gem 'awesome_print'
+gem "cocoon"
+gem 'coffee-rails'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

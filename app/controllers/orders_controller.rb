@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
 def new
   @profile = current_user.profile
   @order = Order.new
-  @order.build_billing_address if @order.billing_address.nil?
-  @order.build_shipping_address if @order.shipping_address.nil?
+ # @order.build_address if @order.billing_address.nil?
+  1.times { @order.addresses.build}
 end
 
 
@@ -31,8 +31,11 @@ def create
   end
 end
 
-def edit
-end
+  def edit
+    @address = Address.find(params[:address])
+    # @order = Order.includes(:addresses).find(params[:id])
+    @order.addresses.build unless @order.addresses.any?
+  end
 
 def update
   respond_to do |format|
@@ -54,7 +57,7 @@ end
 
 
 def order_params
-	params.require(:order).permit(:profile_id, billing_address_attributes: [ :id, :city, :pincode, :landmark, :address, :street_address, :state_id], shipping_address_attributes: [ :id, :city, :pincode, :landmark, :address, :street_address, :state_id])
+	params.require(:order).permit(:profile_id, addresses_attributes: [ :id, :city, :pincode, :landmark, :address, :street_address, :state_id, :_destroy])
 end
 
 

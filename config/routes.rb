@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resource :profile
   resources :orders
   resources :states, only: :index
-
+  resources :addresses , only: [:index] do
+    post :preferred
+  end
   #get "/new_orders" => "orders#new"
   #get "/orders" => "orders#index", :as => :orders
   #post "/orders" => "orders#create_orders", :as => :create_orders
