@@ -21,8 +21,15 @@
         <div class="field">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, :size=>"50", autocomplete: "new-password" %>
-        </div> 
-      </br>
+        </div>
+
+        <% for role in Role.all %> 
+          <div> 
+            <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %> 
+            <%= role.name %> 
+          </div> 
+        <% end %>
+        </br>
 
         <div class="actions">
           <%= f.submit "Sign up", :class => "btn btn-primary mb-2" %>

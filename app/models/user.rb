@@ -8,6 +8,7 @@ class User < ApplicationRecord
   after_create :create_profile
   #validates_presence_of :first_name, :country, :city, :state, :phone
   has_and_belongs_to_many :roles
+  has_one :cart
 
 
 	 def self.new_with_session(params, session)

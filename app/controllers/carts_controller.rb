@@ -1,9 +1,8 @@
 class CartsController < ApplicationController
 
 	def show
-    @cart = @current_cart
-    # @product = Product.find(params["product_id"])
-    # @image = @product.avatar
+    #@cart = @current_cart
+    @cart = current_user.cart
   end
 
   def destroy

@@ -10,6 +10,7 @@ module Demo
   class Application < Rails::Application
   	config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
+    require "#{Rails.root}/app/models/ability.rb"
 
 
     # Initialize configuration defaults for originally generated Rails version.

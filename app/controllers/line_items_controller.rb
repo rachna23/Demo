@@ -33,7 +33,7 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
     @line_item.destroy
     redirect_to cart_path(@current_cart)
-  end  
+  end
 
   private
   def line_item_params

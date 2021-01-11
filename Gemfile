@@ -37,6 +37,7 @@ gem 'city-state'
 gem 'awesome_print'
 gem "cocoon"
 gem 'coffee-rails'
+gem "cancan"
 
 
 # Reduces boot times through caching; required in config/boot.rb
