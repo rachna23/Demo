@@ -1,21 +1,103 @@
-<div class="nested-fields">
+ <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
 
-	<%= form_for @order do |f| %>
-<%#= render 'shared/errors', object: @order %>
-	  <%= f.hidden_field :profile_id, :value => current_user.profile.id %>
-	  <div>
-	    <p><strong>Addresses:</strong></p>
+      <!--Grid row-->
+      <div class="row">
 
-	    <div id="addresses">
-	      <%= f.fields_for :addresses do |address| %>
-	        <%= render 'address_fields', f: address %>
-	      <% end %>
-	      <div class="links">
-	        <%= link_to_add_association 'add address', f, :addresses %>
-	      </div>
-	    </div>
-	  </div>
+        <!--Grid column-->
+        <div class="col-sm-8 mb-3 mb-md-0">
 
-	  <%= f.submit %>
-	<% end %>
-</div>	
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+               <h5 class="card-header h5">Addresses</h5>
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+        <div class="col-sm-12">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+
+          </h4>
+          <!-- Cart -->
+          <% if @addresses.present? %>
+            <ul class="list-group mb-3 z-depth-1">
+              <%  @addresses.each do |address| %>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div> 
+                    <h6 class="my-0"><%= address.city %> 
+                             <%= address.pincode %> <%= address.street_address %></h6>
+                    <small class="text-muted"><%= address.state.name if address.state %></small>
+                  </div>
+                    <span class="text-muted"> <% if address.default? %>
+                                 <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true, :disabled => true%>
+                                <% else %>
+                                  <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true %>
+                              <% end %> </span>
+                </li>
+              <% end %>
+
+            </ul>
+
+          <% end %>  
+          <div id="address"></div>
+                        <%= link_to 'Add new Address', add_address_path, remote: true  %>
+
+          <!-- Cart -->
+        </div>
+        <!--Grid column-->
+              </div>
+              <!--Grid row-->
+              <%= button_to "Continue to checkout", new_transaction_path, :method => "get" %>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          <!-- Cart -->
+          <% if @cart.present? && @cart.line_items.present? %>
+            <ul class="list-group mb-3 z-depth-1">
+              <% @cart.line_items.each do |line_item| %>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div> 
+                    <h6 class="my-0"><%= line_item.product.name %></h6>
+                    <small class="text-muted">Brief description</small>
+                  </div>
+                    <span class="text-muted"> <%= number_to_currency(line_item.product.price) %></span>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>  
+          <!-- Cart -->
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+<style type="text/css">
+  
+
+.mt-5, .my-5 {
+    margin-top: 0rem!important;
+}
+</style>

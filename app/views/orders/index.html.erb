@@ -1,59 +1,71 @@
-<div class="card text-center">
-  <div class="card-header">
-    Order summary
-  </div>
-</div>
+ <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
 
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-  	<% @orders.each do |order| %>
-    <tr>
-    	<% order.line_items.each do |item| %>
-      <th scope="row">1</th>
-      <td><%= item.product.name %></td>
-      <td><%= item.quantity %></td>
-      <td><%= item.product.price %></td>
+      <!--Grid row-->
+      <div class="row">
 
-    </tr>
-      <% end %> 
-   <% end %> 
-  </tbody>
-</table>
+        <!--Grid column-->
+        <div class="col-sm-8 mb-3 mb-md-0">
 
+          <!--Card-->
+          <div class="card">
 
-<div class="card text-center">
-  <div class="card-header">
-    Add Address details
-  </div>
-  <div class="card-body">
-    <p class="card-text"> <%= button_to "Add address details", new_order_path , method: :get,  :class => "btn btn-primary" %></p>
+            <!--Card content-->
+               <h5 class="card-header h5">Order summary</h5>
 
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-sm-12">
+
+          <!-- Heading -->
+                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+
+                  </h4>
+                  <!-- Cart -->
+              <%= button_to "Select payment", new_transaction_path, :method => "get" , remote: true %>
+              <div id ='new-transaction'></div>
 
 
+          <!-- Cart -->
+        </div>
+        <!--Grid column-->
+              </div>
+              <!--Grid row-->
 
-<div class="card text-center">
-  <div class="card-header">
-    Total Amount
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Sub total: <%= number_to_currency(@current_cart.sub_total) %></h5>
-    <p class="card-text"> <%= button_to "Payment options", new_transaction_path , method: :get,  :class => "btn btn-primary" %></p>
+          </div>
+          <!--/.Card-->
 
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">3</span>
+          </h4>
+          <!-- Cart -->
+                   Add order summery
+          <!-- Cart -->
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+<style type="text/css">
+  
+
+.mt-5, .my-5 {
+    margin-top: 0rem!important;
+}
+</style>

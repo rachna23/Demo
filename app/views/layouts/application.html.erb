@@ -29,19 +29,20 @@
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/transactions/new"> Transaction <span class="sr-only">(current)</span></a>
-             <% if can? :create, @category %>  
+             <% if !can? :create, @category %>  
                 </li><li class="nav-item active">
                   <a class="nav-link" href="/categories/new"> Add Category <span class="sr-only">(current)</span></a>
                 </li>
             <% end %>
-              <% if can? :create, @category %>  
+              <% if !can? :create, @category %>  
                 </li><li class="nav-item active">
                   <a class="nav-link" href="/products/new"> Add Product <span class="sr-only">(current)</span></a>
                 </li>
               <% end %>
             
 
-           <% end %> 
+           <% end %>
+
           </ul>
        
         <span class="navbar-text">

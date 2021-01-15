@@ -4,7 +4,7 @@
     <div class="card-body">
        <%= address.city %> <br>
        <%= address.pincode %> <%= address.street_address %><br>
-       <%= address.state.name %><br>
+       <%= address.state.name if address.state %><br>
        <div id = "address"></div>
        <%= link_to "Edit", edit_order_path(address.order.id, :address => address.id)%> |
         <% if address.default? %>

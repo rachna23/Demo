@@ -1,27 +1,41 @@
-<br>
+<!-- Page Content -->
+  <div class="container">
 
-<div class="row image-grid">
-   <% @products.each do |product| %>
-  <div class="col-sm-4 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <a href="" target="_blank">
+    <div class="row">
 
-           <%= link_to image_tag(product.avatar , :class => "img-responsive center-block") , product_path(id: product.id)  rescue image_tag 'http://placehold.it/250x250'%>
-        </a>
-      </div>
-      <div class="panel-footer">
-        <i class="fa fa-camera-retro" aria-hidden="true">Name: <%= product.name %></i></br>
-        <i class="fa fa-camera-retro" aria-hidden="true">Price: <%= product.price %></i>
       
+
+      <div class="col-lg-9">
+
+        <div class="row">
+          <% @products.each do |product| %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <%= image_tag  product.avatar.variant(resize_to_limit: [400, 400]) , class:"card-img-top" rescue image_tag 'http://placehold.it/250x250' %>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#">Item One</a>
+                  </h4>
+                  <h5><%= product.price %></h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+            </div>
+          <% end %> 
+
+        </div>
+        <!-- /.row -->
+
       </div>
+      <!-- /.col-lg-9 -->
+
     </div>
+    <!-- /.row -->
+
   </div>
-<% end %> 
+  <!-- /.container -->
 
-<style type="text/css">
-.image-grid img {
-   margin-bottom: 1rem;
-}</style>
-
-
+  <!-- Bootstrap core JavaScript -->

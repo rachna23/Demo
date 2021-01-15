@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     post :preferred
   end
   #get "/new_orders" => "orders#new"
-  #get "/orders" => "orders#index", :as => :orders
+  get "/add_address" => "addresses#add_address", :as => :add_address
+  get "/product_list" => "products#product_list", :as => :product_list
   #post "/orders" => "orders#create_orders", :as => :create_orders
 
    post "/hook" => "regstrations#hook"

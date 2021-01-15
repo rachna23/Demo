@@ -3,10 +3,15 @@ class OrdersController < ApplicationController
 
 def new
   @profile = current_user.profile
-  @order = Order.new
- # @order.build_address if @order.billing_address.nil?
-  1.times { @order.addresses.build}
+  @cart = current_user.cart
+  find_all_address
 end
+
+
+def find_all_address
+  ord = current_user.profile.orders
+  @addresses = ord.map(&:addresses).flatten
+end  
 
 
 def index
@@ -22,7 +27,7 @@ def create
   @order = Order.new(order_params)
   respond_to do |format|
     if @order.save
-      format.html { redirect_to @order, notice: 'Order was successfully created.' }
+      format.html { redirect_to new_order_path, notice: 'Address was successfully created.' }
       format.json { render :show, status: :created, location: @order }
     else
       format.html { render :new }

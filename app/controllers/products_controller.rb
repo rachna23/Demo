@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
     @products = Category.find_by_id(params["id"]).products
   end
 
+  def product_list
+    @products = Product.all
+  end  
+
 
   def show
   end

@@ -38,6 +38,7 @@ gem 'awesome_print'
 gem "cocoon"
 gem 'coffee-rails'
 gem "cancan"
+gem 'shopify_api'
 
 
 # Reduces boot times through caching; required in config/boot.rb
