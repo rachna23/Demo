@@ -1,0 +1,22 @@
+<div class="nested-fields">
+
+	<%= form_for @order do |f| %>
+<%#= render 'shared/errors', object: @order %>
+	  <%= f.hidden_field :profile_id, :value => current_user.profile.id %>
+	  <div>
+	    <p><strong>Addresses:</strong></p>
+
+	    <div id="addresses">
+	      <%= f.fields_for :addresses do |address| %>
+	        <%= render 'address_fields', f: address %>
+
+	      <% end %>
+	      <div class="links">
+	        <%= link_to_add_association 'add address', f, :addresses %>
+	      </div>
+	    </div>
+	  </div>
+
+	  <%= f.submit %>
+	<% end %>
+</div>	
