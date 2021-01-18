@@ -4,13 +4,12 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = Category.find_by_id(params["id"]).products
+    if params["id"]
+      @products = Category.find_by_id(params["id"]).products
+    else  
+      @products = Product.all
+    end  
   end
-
-  def product_list
-    @products = Product.all
-  end  
-
 
   def show
   end

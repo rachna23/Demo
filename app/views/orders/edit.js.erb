@@ -1,0 +1,3 @@
+$('#edit-form').html("<%= escape_javascript(render(:partial => 'orders/add_address', :locals => {:order => @order} ))%>");
+$("html, body").animate({ scrollTop: 0 }, "slow");
+

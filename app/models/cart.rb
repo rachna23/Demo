@@ -12,4 +12,8 @@ class Cart < ApplicationRecord
     return sum
   end
 
+  def total_item
+    self.line_items.count
+  end  
+
 end

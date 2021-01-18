@@ -30,7 +30,7 @@ def create
       format.html { redirect_to new_order_path, notice: 'Address was successfully created.' }
       format.json { render :show, status: :created, location: @order }
     else
-      format.html { render :new }
+      format.html { redirect_to new_order_path, notice: 'Please check'  }
       format.json { render json: @order.errors, status: :unprocessable_entity }
     end
   end
@@ -45,12 +45,20 @@ end
 def update
   respond_to do |format|
     if @order.update(order_params)
-      format.html { redirect_to @order, notice: 'order was successfully updated.' }
+      format.html { redirect_to new_order_path, notice: 'order was successfully updated.' }
       format.json { render :show, status: :ok, location: @order }
     else
       format.html { render :edit }
       format.json { render json: @order.errors, status: :unprocessable_entity }
     end
+  end
+end
+
+def destroy
+  @order.destroy
+  respond_to do |format|
+    format.html { redirect_to new_order_path, notice: 'order was successfully destroyed.' }
+    format.json { head :no_content }
   end
 end
 

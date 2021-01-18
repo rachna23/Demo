@@ -1,12 +1,61 @@
-<p id="notice"><%= notice %></p>
+<!--Section: Block Content-->
+<section class="mb-5">
 
-<div class="card" style="width: 20rem;">
-   <%= image_tag  @product.avatar.variant(resize_to_limit: [300, 300]) , class:"card-img-top" rescue image_tag 'http://placehold.it/250x250' %>
-  <div class="card-body">
-    <h5 class="card-title"> Product Name: <%= @product.name %> </h5>
-    <p class="card-text">  Product Description:  <%= @product.description %> </p>
-    <p class="card-text">   Product Price: <%= @product.price %>  </p>
-   <%= button_to "Add to cart", line_items_path(:product_id => @product.id), method: :post, :class => "btn btn-primary mb-2" %>
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <div class="col-12 mb-0">
+        <figure class="view overlay rounded z-depth-1 main-img">
+          <div class="img-magnifier-container">
+            <%= image_tag(@product.avatar, {:style => "width:450px;height:450px;", id:"myimage"}) %>
+         </div>
+        </figure>
+      </div>
+    </div>
+  
+
+    <div class="col-md-6">
+      <p><span class="mr-1"><strong>₹<%= @product.price %></strong></span></p>
+      <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
+        error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
+        officia quis dolore quos sapiente tempore alias.</p>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+              <td>Shirt 5407X</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
+              <td>Black</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
+              <td>India</td>
+            </tr>
+            <hr>
+             <tr>
+              <th class="pl-0 w-25" scope="row"><%= button_to "Add to cart", line_items_path(:product_id => @product.id), method: :post, :class => "btn btn-primary btn-md mr-1 mb-2" %> </th>
+              <td> <%= button_to "Buy now", new_transaction_path, method: :get, :class => "btn btn-primary btn-md mr-1 mb-2" %></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </div>
-</div>
 
+</section>
+<!--Section: Block Content-->
+
+
+
+
+<script>
+
+  // MDB Lightbox Init
+magnify("myimage", 3);
+
+
+</script>

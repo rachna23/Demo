@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+         <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/transactions/new"> Transaction <span class="sr-only">(current)</span></a>
+         <% if !can? :create, @category %>  
+            </li><li class="nav-item active">
+              <a class="nav-link" href="/categories/new"> Add Category <span class="sr-only">(current)</span></a>
+            </li>
+        <% end %>
+          <% if !can? :create, @category %>  
+            </li><li class="nav-item active">
+              <a class="nav-link" href="/products/new"> Add Product <span class="sr-only">(current)</span></a>
+            </li>
+          <% end %>
+       <% end %>
+      </ul>
+          
+    <div class="dropdown">
+      <button class="dropbtn">My Account</button>
+      <div class="dropdown-content">
+        <% if user_signed_in? %>
+          <%= link_to 'Edit profile', edit_profile_path, :class => 'navbar-link' %> 
+          <%= link_to 'profile details', profile_path(current_user.profile), :class => 'navbar-link' %> 
+          <%= link_to 'Cart', cart_path(@current_cart,:product_id => params["product_id"]), :class => 'navbar-link' %>
+          <%= link_to "My Order", "" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> |
+          <%#= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        <% end %>  
+      </div>
+    </div>
+
+  </div>
+</nav>

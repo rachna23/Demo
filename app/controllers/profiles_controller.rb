@@ -8,8 +8,8 @@ class ProfilesController < ApplicationController
   def update
       @profile = current_user.profile
 		  if @profile.update_attributes(profile_params)
-		    flash[:success] = "Profile updated!"
-		    redirect_path
+		    flash[:notice] = "Profile updated!"
+		    redirect_to profile_path(@profile)
 		  else
 		    render action: :edit
 		  end
@@ -17,20 +17,6 @@ class ProfilesController < ApplicationController
 
   def show
   	@profile = current_user.profile
-  end	
-
-  def redirect_path
-  	if params["order"] == "true"
-     @order = Order.new(profile: current_user.profile)
-		  @current_cart.line_items.each do |item|
-		    @order.line_items << item
-		   # item.cart_id = nil
-		  end
-		  @order.save
-		  #Cart.destroy(session[:cart_id])
-		  #session[:cart_id] = nil
-		  redirect_to orders_path
-    end  
   end	
 
 	def profile_params

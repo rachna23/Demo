@@ -6,8 +6,8 @@
       <%= simple_form_for(@product) do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-          <%= f.input :name %>
-          <%= f.input :price %>
+          <%= f.input :name, :required => true %>
+          <%= f.input :price, :required => true %>
           <%= f.input :description %>
           <%= f.input :avatar %>
           <%#= f.select(:category_id, @categories, {} ,{ :class => 'my_style_class' }) %>

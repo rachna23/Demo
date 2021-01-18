@@ -3,7 +3,7 @@
     <div class="container wow fadeIn">
 
       <!--Grid row-->
-      <div class="row">
+      <div class="row ">
 
         <!--Grid column-->
         <div class="col-sm-8 mb-3 mb-md-0">
@@ -33,12 +33,25 @@
                     <h6 class="my-0"><%= address.city %> 
                              <%= address.pincode %> <%= address.street_address %></h6>
                     <small class="text-muted"><%= address.state.name if address.state %></small>
+                    <div id = 'edit-form'></div>
+                   <div id="outer">
+                     <div class="inner"> <%= button_to "Edit", edit_order_path(address.order.id), params: { address: address.id } , :method => "get" , remote: true %> </div>
+                     <div class="inner"> 
+                      <%= button_to 'Destroy', order_path(address.order.id),
+                            data: {:confirm => 'Are you sure?'}, :method => :delete %>
+                      </div>
+                   </div>
+
                   </div>
-                    <span class="text-muted"> <% if address.default? %>
+                    <span class="text-muted">
+                               <% if address.default? %>
                                  <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true, :disabled => true%>
                                 <% else %>
                                   <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true %>
-                              <% end %> </span>
+                              <% end %>
+
+
+                    </span>
                 </li>
               <% end %>
 
@@ -46,14 +59,27 @@
 
           <% end %>  
           <div id="address"></div>
-                        <%= link_to 'Add new Address', add_address_path, remote: true  %>
+                <%= link_to 'Add new Address', add_address_path,  class: "btn btn-large btn-success", id: "set-margin", remote: true  %>
 
           <!-- Cart -->
         </div>
         <!--Grid column-->
               </div>
               <!--Grid row-->
-              <%= button_to "Continue to checkout", new_transaction_path, :method => "get" %>
+              <% if before_checkout(current_user) &&  check_preffered_address(current_user)%>
+                <%= button_to "Continue to checkout", new_transaction_path, :method => "get" %>
+              <% elsif before_checkout(current_user) && !check_preffered_address(current_user)%>
+                  <div class="alert alert-warning" role="alert">
+                    Please add your address and select preffered, After that you can do checkout.
+                  </div>
+              <% else %>  
+                 <div class="alert alert-warning" role="alert">
+                    Please add your address details.
+                  </div>   
+              <% end %>
+
+              
+ 
 
           </div>
           <!--/.Card-->
@@ -78,7 +104,7 @@
                     <h6 class="my-0"><%= line_item.product.name %></h6>
                     <small class="text-muted">Brief description</small>
                   </div>
-                    <span class="text-muted"> <%= number_to_currency(line_item.product.price) %></span>
+                    <span class="text-muted"> ₹<%= line_item.product.price %></span>
                 </li>
               <% end %>
             </ul>
@@ -94,10 +120,12 @@
   </main>
   <!--Main layout-->
 
-<style type="text/css">
-  
 
-.mt-5, .my-5 {
-    margin-top: 0rem!important;
+
+
+<style type="text/css">
+#set-margin {
+    margin-left: 10px;
 }
+
 </style>

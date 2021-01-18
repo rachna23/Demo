@@ -1,7 +1,11 @@
 module ProfilesHelper
 
 	def full_name
-		[current_user.profile.first_name + current_user.profile.last_name].reject(&:blank?).join(' ').titleize
+		[current_user.profile.first_name  + current_user.profile.last_name].reject(&:blank?).join('  ').titleize
+	end
+
+  def first_name
+		current_user.profile.first_name
 	end
 
 	def email

@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-light bg-faded">
 <% Category.all.each do |category| %>  <button class="btn"> <%= link_to "#{ category.name}", products_path(:id => category.id)%> </button> <% end %>
 </nav>

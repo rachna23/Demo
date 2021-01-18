@@ -7,15 +7,14 @@ class Profile < ApplicationRecord
 	has_many :orders, dependent: :destroy
 	has_one :address, dependent: :destroy
 	accepts_nested_attributes_for :address, allow_destroy: true
-#	validates_presence_of :city
-	after_update :create_braintree_customer
+	#after_update :create_braintree_customer
 
 	def create_braintree_customer
 		gateway = Profile.new.gateway
 		if braintree_customer_id?
 			result = gateway.customer.update(braintree_customer_id,braintree_customer_hash)
 			result_hash(result)
-		else	
+		else
 		  result = gateway.customer.create(braintree_customer_hash)
 		  result_hash(result)
 		end	

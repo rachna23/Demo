@@ -7,4 +7,11 @@ class Order < ApplicationRecord
  #    belongs_to :shipping_address, :class_name => "Address"
  #    accepts_nested_attributes_for :shipping_address
 	# accepts_nested_attributes_for :billing_address
+
+
+
+	def self.check_address
+		puts "dfdfd"
+	end	
+
 end
