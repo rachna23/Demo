@@ -11,6 +11,7 @@ module Demo
   	config.autoload_paths << Rails.root.join("lib")
     config.eager_load_paths << Rails.root.join("lib")
     require "#{Rails.root}/app/models/ability.rb"
+    config.assets.initialize_on_precompile = false
 
 
     # Initialize configuration defaults for originally generated Rails version.
