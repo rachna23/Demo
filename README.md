@@ -10,12 +10,9 @@ User is able to do the following things:
 6. Able to do payment with credit cards using braintree api.
 
 
-Steps for running project.
-
+setup for running project.
 * Ruby version: ruby-2.7.1
-
 * rails version: Rails 6.0.3.4
-
 * Database: postgresql
 
 Steps for running the project
