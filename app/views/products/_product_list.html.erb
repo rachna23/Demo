@@ -19,9 +19,11 @@
               <p>Size M, L, XL, XXL</p>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
             </div>
-            <%= link_to "Edit", edit_product_path(product.id) %>
-            <%= link_to 'Destroy', product_path(product.id),
+            <% if current_user.email == "rachna.2302@gmail.com" %>
+              <%= link_to "Edit", edit_product_path(product.id) %>
+              <%= link_to 'Destroy', product_path(product.id),
                 data: {:confirm => 'Are you sure?'}, :method => :delete %>
+            <% end %>    
             <div class="card-footer">
               <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
             </div>
