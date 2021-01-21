@@ -1,41 +1,37 @@
 <div class="col-sm-13 mb-6 mb-md-0">
-  <div class="card">
-    <h5 class="card-header h5">Add Addresses</h5>
+<div class="card">
+  <h5 class="card-header h5">Add Addresses</h5>
     <div class="card-body">
-
-			<div class="nested-fields">
-					<div class="field">
-						<%= f.label :state %><br />
-					  <%= f.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
-				  </div>
-			  	<div class="field">
-			  		<%= f.label :city %><br />
-						<%= f.text_field :city, class: "form-control", required: true  %>
-					</div>		
-					<div class="field">
-						<%= f.label :pincode %><br />
-				    <%= f.text_field :pincode, :required => true %>
-				  </div>  
-					<div class="field">
-						<%= f.label :landmark %><br />
-						<%= f.text_field :landmark %>
-					</div>	
-					<div class="field">
-						<%= f.label :address %><br />
-						<%= f.text_field :address %>
-					</div>	
-					<div class="field">
-						
-						<%= f.label :street_address %><br />
-						<%= f.text_field :street_address %>
-					</div>		
-					<div class="field">
-			  		<%#= f.check_box :_destroy %>
-			  	</div>	
-
-			  <%#= link_to_remove_association "remove address", f %>
-			</div>
-
-   </div>  
+		  <div class="nested-fields">
+				  <div class="field">
+					  <%= f.label :state %><br />
+				    <%= f.select :state_id, State.all.collect {|p| [p.name, p.id ]}, { prompt: 'Select state' } %>
+			    </div>
+		  	  <div class="field">
+		  		  <%= f.label :city %><br />
+					  <%= f.text_field :city, class: "form-control", required: true  %>
+				  </div>		
+				  <div class="field">
+					  <%= f.label :pincode %><br />
+			      <%= f.text_field :pincode, :required => true %>
+			    </div>  
+				  <div class="field">
+					  <%= f.label :landmark %><br />
+					  <%= f.text_field :landmark %>
+				  </div>	
+				  <div class="field">
+					  <%= f.label :address %><br />
+					  <%= f.text_field :address %>
+				  </div>	
+				  <div class="field">
+					  <%= f.label :street_address %><br />
+					  <%= f.text_field :street_address %>
+				  </div>		
+				  <div class="field">
+		  		  <%#= f.check_box :_destroy %>
+		  	  </div>	
+		     <%#= link_to_remove_association "remove address", f %>
+		  </div>
+    </div>  
   </div>  
 </div>

@@ -236,3 +236,11 @@ ul.online-users {
 .text-white {
     color: #fff;
 }
+
+#set-margin {
+    margin-left: 10px;
+}
+
+.mt-5, .my-5 {
+    margin-top: 0rem!important;
+}

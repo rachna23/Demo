@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-7 mb-3 mb-md-0">
+    <div class="card">
+      <h5 class="card-header h5">Order details</h5>
+       <div class="col-sm-12">
+        <ul class="list-group list-group-flush">
+	        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+	          Subtotal:
+	          <span> ₹<%= @current_cart.sub_total %></span>
+	        </li>
+	        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+	          Total number of items:
+	          <span><%= current_user.cart.total_item %></span>
+	        </li>
+	        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+	          Standard Ground Shipping:
+	          <span>Gratis</span>
+	        </li>
+	        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+	          <div>
+	            <strong>The total amount of</strong>
+	            <strong>
+	              <p class="mb-0">(including VAT)</p>
+	            </strong>
+	          </div>
+			          <span><strong>₹<%= @current_cart.sub_total %></strong></span>
+			    </li>
+		    </ul>
+		    <hr/>
+		    <% if check_address %>
+			    <ul class="list-group mb-3 z-depth-1">
+	            <h5> your order will Deliver to following address </h4>
+	            <li class="list-group-item d-flex justify-content-between lh-condensed">
+	              <div> 
+	                <h6 class="my-0"><%= preffered_address.first.city %> 
+	                         <%= preffered_address.first.pincode %> <%= preffered_address.first.street_address %></h6>
+	                <small class="text-muted"><%= preffered_address.first.state.name if preffered_address.first.state %></small>
+	              </div>
+	            </li>
+	          </ul>
+	      <% else %>
+	        <div class="alert alert-warning" role="alert">
+             Please add some address first.
+          </div>
+	      <% end %>    
+        </div>
+      </div>
+    </div>    
+</div>
+
+

@@ -8,8 +8,8 @@
     <ul class="nav-news-feed">
       <li><i class="fa fa-list-alt icon1"></i><div><%= link_to 'Edit profile', edit_profile_path %></div></li>
       <li><i class="fa fa-users icon2"></i><div><%= link_to 'Manage Address', new_order_path %></div></li>
-      <li><i class="fa fa-user icon3"></i><div><a href="#">Order details</a></div></li>
-      <li><i class="fa fa-comments icon4"></i><div><a href="#">cart details</a></div></li>
+      <li><i class="fa fa-user icon3"></i><div><%= link_to 'My order details', transaction_success_path %></div></li>
+      <li><i class="fa fa-comments icon4"></i><div><%= link_to 'My cart details', cart_path(@current_cart.id) %></div></li>
     </ul><!--news-feed links ends-->
   </div>
 </div>

@@ -1,12 +1,19 @@
 module OrdersHelper
- 
- def before_checkout(user)
- 	user.profile.orders.present? && user.profile.orders.map(&:addresses).present?
- end
 
- def check_preffered_address(user)
- 	ord = current_user.profile.orders
- 	ord.joins(:addresses).where("addresses.default IS NOT NULL").present?
- end
+  def before_checkout
+    orders.present? && orders.map(&:addresses).present?
+  end
+
+  def check_preffered_address
+    orders.joins(:addresses).where('addresses.default IS NOT NULL').present?
+  end
+
+  def preffered_address
+    Address.where("addresses.default IS True")
+  end	
+
+  def orders
+    current_user.profile.orders
+  end
   
 end

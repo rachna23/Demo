@@ -1,3 +1,3 @@
 class State < ApplicationRecord
-	has_one :address
+  has_one :address
 end

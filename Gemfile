@@ -21,42 +21,34 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem 'therubyracer'
-gem 'devise'
+gem 'aws-sdk-s3', require: false
+gem 'awesome_print'
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'braintree'
+gem 'cancan'
+gem 'city-state'
+gem 'cocoon'
+gem 'coffee-rails'
+gem 'devise'
 gem 'figaro'
-gem 'simple_form'
-gem 'rubocop-rails', require: false
-gem 'image_processing'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'city-state'
-gem 'awesome_print'
-gem "cocoon"
-gem 'coffee-rails'
-gem "cancan"
-gem 'shopify_api'
-
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
+gem 'rubocop-rails', require: false
+gem 'simple_form'
+gem 'image_processing'
+gem 'jquery-rails'
+gem 'uglifier', '>= 1.0.3'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
-
-
-
-  gem 'jquery-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
-  gem "aws-sdk-s3", require: false
-  gem "image_processing"
-
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

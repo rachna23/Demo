@@ -1,19 +1,19 @@
 <% @addresses.each do |address| %>
   <div class="card w-75 card text-white bg-dark mb-3">
     <div class="card-header">Header</div>
-    <div class="card-body">
-       <%= address.city %> <br>
-       <%= address.pincode %> <%= address.street_address %><br>
-       <%= address.state.name if address.state %><br>
-       <div id = "address"></div>
-       <%= link_to "Edit", edit_order_path(address.order.id, :address => address.id)%> |
-        <% if address.default? %>
-         <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true, :disabled => true %>
-        <% else %>
-          <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true %>
-        <% end %> 
+      <div class="card-body">
+        <%= address.city %> <br>
+        <%= address.pincode %> <%= address.street_address %><br>
+        <%= address.state.name if address.state %><br>
+        <div id = "address"></div>
+        <%= link_to "Edit", edit_order_path(address.order.id, :address => address.id)%> |
+          <% if address.default? %>
+            <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true, :disabled => true %>
+          <% else %>
+            <%= button_to "Default", address_preferred_path(address), :method => "post", remote: true %>
+          <% end %> 
        <%= link_to "Delete", "" %>
-
+      </div>   
     </div>
   </div>
 <% end %>

@@ -2,31 +2,28 @@
 <html>
   <head>
     <title>Demo</title>
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://js.braintreegateway.com/web/dropin/1.25.0/js/dropin.min.js"></script>
     <%= javascript_include_tag "custome", "data-turbolinks-track" => true  %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%= csrf_meta_tags %>
   </head>
-  
   <body>
     <%= render partial: "layouts/navbar" %> 
     <div class="container">
       <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-       <%= render partial: "categories/index" %> 
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= render partial: "categories/index" %>
+      <% end %>  
         </br>
-      <%= yield %>
-      
+        <%= yield %>
     </div>  
   </body>
 </html>

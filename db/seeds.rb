@@ -10,10 +10,10 @@ require 'byebug'
 
 
 CS.countries.each do |country|
-  Country.create( short_name: country[0], name: country[1])
+  Country.create(short_name: country[0], name: country[1])
 end
 
 
 CS.states(:IN).each do |states|
-	State.create(short_name:states[0], name:states[1])
+  State.create(short_name:states[0], name:states[1])
 end

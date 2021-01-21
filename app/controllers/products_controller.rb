@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
   # load_and_authorize_resource
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-
   def index
     if params["id"]
       @products = Category.find_by_id(params["id"]).products
@@ -14,17 +13,14 @@ class ProductsController < ApplicationController
   def show
   end
 
-
   def new
     @product = Product.new
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @categories = Category.all.map{|c| [c.name, c.id] }
   end
-
 
   def edit
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @categories = Category.all.map{|c| [c.name, c.id] }
   end
-
 
   def create
     @product = Product.new(product_params)
@@ -40,7 +36,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -52,7 +47,6 @@ class ProductsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @product.destroy
