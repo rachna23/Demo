@@ -1,24 +1,30 @@
-# README
+# Rails Shopping Cart with twitter bootstrap ui and braintree payment gateway integration.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User is able to do the following things:
 
-Things you may want to cover:
+1. View all products
+2. Add/ remove products to/ from cart
+3. Add/ reduce quantity of products in cart
+4. Checkout cart by submitting order
+5. Enter address details
+6. Able to do payment with credit cards using braintree api.
 
-* Ruby version
 
-* System dependencies
+Steps for running project.
 
-* Configuration
+* Ruby version: ruby-2.7.1
 
-* Database creation
+* rails version: Rails 6.0.3.4
 
-* Database initialization
+* Database: postgresql
 
-* How to run the test suite
+Steps for running the project
+1. git clone: project url
+2. Run bundle install
+3. run rake db:migrate
+4. rake db:seed
+5. start the server.
 
-* Services (job queues, cache servers, search engines, etc.)
+Working url
+https://warm-mountain-37425.herokuapp.com/products
 
-* Deployment instructions
-
-* ...
